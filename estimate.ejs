@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Estimate: <%= project.name %></title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+</head>
+<body>
+  <main class="container">
+    <header>
+      <h1>AI Implementation Estimate</h1>
+      <p>Date: <%= new Date().toLocaleDateString() %></p>
+    </header>
+
+    <section>
+      <h2>Executive Summary</h2>
+      <p>This comprehensive estimate outlines the proposed AI implementation strategy for your organization. Our approach focuses on delivering practical, ROI-driven AI solutions that integrate seamlessly with your existing business processes.</p>
+    </section>
+
+    <section>
+      <h2>Implementation Phases</h2>
+      <figure>
+        <table>
+          <thead>
+            <tr>
+              <th>Phase</th>
+              <th>Duration</th>
+              <th>Key Deliverables</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% project.sprints.forEach(sprint => { %>
+              <tr>
+                <td><%= sprint.name %></td>
+                <td><%= sprint.duration %></td>
+                <td><%= sprint.objective %></td>
+              </tr>
+            <% }); %>
+          </tbody>
+        </table>
+      </figure>
+    </section>
+    
+    <section>
+        <h2>Total Investment</h2>
+        <p>The total investment for this project is: <strong>$<%= pricing.totalPrice.toLocaleString() %></strong></p>
+        
+        <h3>Payment Schedule</h3>
+        <figure>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Milestone</th>
+                        <th>Percentage</th>
+                        <th>Amount</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>At Signing of Agreement</td>
+                        <td><%= pricing.paymentSchedule.upfront.percentage %>%</td>
+                        <td>$<%= pricing.paymentSchedule.upfront.amount.toLocaleString() %></td>
+                    </tr>
+                    <tr>
+                        <td>First Functional Prototype Delivery</td>
+                        <td><%= pricing.paymentSchedule.milestone.percentage %>%</td>
+                        <td>$<%= pricing.paymentSchedule.milestone.amount.toLocaleString() %></td>
+                    </tr>
+                    <tr>
+                        <td>Final Product and Documentation Delivery</td>
+                        <td><%= pricing.paymentSchedule.final.percentage %>%</td>
+                        <td>$<%= pricing.paymentSchedule.final.amount.toLocaleString() %></td>
+                    </tr>
+                </tbody>
+            </table>
+        </figure>
+    </section>
+
+    <section>
+      <h2>Subscription Tiers</h2>
+      <article>
+        <h3><%= subscriptions.BASIC.name %></h3>
+        <p><%= subscriptions.BASIC.description %></p>
+        <ul>
+          <% subscriptions.BASIC.features.forEach(feature => { %>
+            <li><%= feature %></li>
+          <% }); %>
+        </ul>
+      </article>
+      <article>
+        <h3><%= subscriptions.PREMIUM.name %></h3>
+        <p><%= subscriptions.PREMIUM.description %></p>
+        <ul>
+          <% subscriptions.PREMIUM.features.forEach(feature => { %>
+            <li><%= feature %></li>
+          <% }); %>
+        </ul>
+      </article>
+    </section>
+
+    <footer>
+      <p>This estimate is valid for 30 days and subject to final scope confirmation.</p>
+      <p>Contact: Don Menatech | gonzalo@menatech.cloud | +1 (787) 428-7058</p>
+    </footer>
+  </main>
+</body>
+</html>

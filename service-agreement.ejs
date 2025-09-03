@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Service Agreement</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+</head>
+<body>
+  <main class="container">
+    <header>
+      <h1>Service Agreement</h1>
+    </header>
+
+    <p>This Service Agreement ("Agreement") is made effective as of <%= new Date().toLocaleDateString() %>, by and between Menatech ("Service Provider") and <%= client.companyName %> ("Client").</p>
+
+    <section>
+      <h2>1. Scope of Services</h2>
+      <p>Service Provider agrees to provide the following services: <%= project.description %></p>
+    </section>
+
+    <section>
+      <h2>2. Project Investment</h2>
+      <p>The total investment for the services rendered under this Agreement is $<%= pricing.totalPrice.toLocaleString() %> USD.</p>
+    </section>
+
+    <section>
+      <h2>3. Legal Clauses</h2>
+      <article>
+        <%- legal.serviceAgreementBody %>
+      </article>
+    </section>
+
+    <section>
+      <h2>Signatures</h2>
+      <p>IN WITNESS WHEREOF, the parties have executed this Agreement as of the date first written above.</p>
+      
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
+        <div>
+          <p><strong>Service Provider</strong></p>
+          <p>_________________________</p>
+          <p>Don Menatech</p>
+          <p>Principal AI Consultant, Menatech</p>
+        </div>
+        <div>
+          <p><strong>Client</strong></p>
+          <p>_________________________</p>
+          <p><%= client.name %></p>
+          <p><%= client.companyName %></p>
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Non-Disclosure Agreement</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+</head>
+<body>
+  <main class="container">
+    <header>
+      <h1>Non-Disclosure Agreement (NDA)</h1>
+    </header>
+
+    <p>This Non-Disclosure Agreement ("Agreement") is entered into as of <%= new Date().toLocaleDateString() %> between:</p>
+    <ul>
+        <li><strong>Disclosing Party:</strong> <%= client.companyName %> ("Client")</li>
+        <li><strong>Receiving Party:</strong> Gonzalo Mena, representing Menatech ("Consultant")</li>
+    </ul>
+
+    <section>
+      <h2>Preamble</h2>
+      <p>The Parties intend to discuss and evaluate a potential business relationship related to the project: <%= project.name %>. In the course of these discussions, the Disclosing Party may share certain confidential information with the Receiving Party. The purpose of this Agreement is to protect that confidential information.</p>
+    </section>
+    
+    <section>
+      <h2>Agreement</h2>
+      <article>
+        <%- legal.ndaBody %>
+      </article>
+    </section>
+
+    <section>
+      <h2>Signatures</h2>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
+        <div>
+          <p><strong>Disclosing Party (Client)</strong></p>
+          <p>_________________________</p>
+          <p><%= client.name %></p>
+          <p><%= client.companyName %></p>
+        </div>
+        <div>
+          <p><strong>Receiving Party (Consultant)</strong></p>
+          <p>_________________________</p>
+          <p>Gonzalo Mena</p>
+          <p>Menatech</p>
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Work Order: <%= project.name %></title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+  <style>
+    .task { margin-bottom: 2rem; }
+    .sub-task { margin-left: 2rem; border-left: 2px solid #ccc; padding-left: 1rem; }
+  </style>
+</head>
+<body>
+  <main class="container">
+    <header>
+      <h1>Work Order: <%= project.name %></h1>
+      <p><strong>Client:</strong> <%= client.companyName %></p>
+      <p><strong>Project Description:</strong> <%= project.description %></p>
+    </header>
+
+    <section>
+      <h2>Tech Stack Recommendation</h2>
+      <article>
+        <h3>Basic Version (Commercial Tools)</h3>
+        <p>This approach prioritizes speed and reliability by using industry-leading commercial platforms.</p>
+        <ul>
+          <li>Chatbot Platform: Intercom / Drift</li>
+          <li>Integration Layer: Make / Zapier</li>
+          <li>Project Management: Trello / Asana</li>
+        </ul>
+      </article>
+      <article>
+        <h3>Premium Version (Custom Built)</h3>
+        <p>This approach provides maximum flexibility and scalability by building the core automation from scratch.</p>
+        <ul>
+          <li>Backend: Node.js with Express</li>
+          <li>Natural Language Processing: Google Dialogflow / Rasa</li>
+          <li>Database: PostgreSQL / MongoDB</li>
+        </ul>
+      </article>
+    </section>
+
+    <section>
+      <h2>Project Plan: Sprints & Tasks</h2>
+      <% project.sprints.forEach(sprint => { %>
+        <details open>
+          <summary>
+            <h3><%= sprint.name %> (<%= sprint.duration %>)</h3>
+          </summary>
+          <p><strong>Objective:</strong> <%= sprint.objective %></p>
+          <% sprint.tasks.forEach(task => { %>
+            <div class="task">
+              <h4>Task: <%= task.name %> (<%= task.totalHours %> hours)</h4>
+              <% task.subTasks.forEach(subTask => { %>
+                <div class="sub-task">
+                  <p><strong>Sub-task:</strong> <%= subTask.name %> (<%= subTask.hours %> hours)</p>
+                  <p><strong>Assigned Role:</strong> <%= subTask.assignedRole.name %></p>
+                  <p><strong>Step-by-step Guide:</strong> [Detailed execution guide for this sub-task would be generated here]</p>
+                </div>
+              <% }); %>
+              <% if (task.deliverable) { %>
+                <p><strong>Deliverable:</strong> <%= task.deliverable %></p>
+              <% } %>
+            </div>
+          <% }); %>
+        </details>
+      <% }); %>
+    </section>
+    
+    <footer>
+        <p>Internal Use Only</p>
+    </footer>
+  </main>
+</body>
+</html>

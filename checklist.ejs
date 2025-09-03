@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Deliverables Checklist: <%= project.name %></title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+</head>
+<body>
+  <main class="container">
+    <header>
+      <h1>Deliverables Checklist</h1>
+      <h2><%= project.name %></h2>
+      <p>This document outlines the key deliverables the client can expect during the project.</p>
+    </header>
+
+    <% project.sprints.forEach(sprint => { %>
+      <section>
+        <h3><%= sprint.name %></h3>
+        <ul>
+          <% sprint.tasks.forEach(task => { %>
+            <% if (task.deliverable) { %>
+              <li>
+                <label for="<%= task.name.replace(/\\s+/g, '-') %>">
+                  <input type="checkbox" id="<%= task.name.replace(/\\s+/g, '-') %>" name="<%= task.name.replace(/\\s+/g, '-') %>">
+                  <strong><%= task.deliverable %></strong>
+                </label>
+              </li>
+            <% } %>
+          <% }); %>
+        </ul>
+      </section>
+    <% }); %>
+
+    <section>
+        <h3>Final Project Deliverables</h3>
+        <ul>
+            <li><label><input type="checkbox"> Complete and deployed AI Solution</label></li>
+            <li><label><input type="checkbox"> Full Technical Documentation Package</label></li>
+            <li><label><input type="checkbox"> Team Training Program Materials</label></li>
+            <li><label><input type="checkbox"> 30-Day Post-Launch Support</label></li>
+        </ul>
+    </section>
+
+    <footer>
+      <p>Menatech AI Implementation Services</p>
+    </footer>
+
+  </main>
+</body>
+</html>

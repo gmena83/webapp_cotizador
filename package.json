@@ -1,0 +1,16 @@
+{
+  "name": "document-generation-system",
+  "version": "1.0.0",
+  "description": "Advanced document generation system.",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js"
+  },
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "ejs": "^3.1.10",
+    "express": "^4.19.2"
+  },
+  "author": "Jules",
+  "license": "ISC"
+}
